@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('/threads', function () {
-    return Thread::latest()->pluck('body');
+    return \App\Thread::latest()->pluck('title');
 });
 
 Route::post('/threads', function () {
-    Thread::forceCreate(request('body'));
+    $thread = \App\Thread::forceCreate(request(['title']));
+    event(new \App\Events\ThreadCreated($thread));
 });
