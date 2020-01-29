@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    \App\Events\OrderStatusUpdated::dispatch();
     return view('welcome');
 });
 
