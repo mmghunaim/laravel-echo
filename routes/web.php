@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    \App\Events\OrderStatusUpdated::dispatch();
     return view('welcome');
+});
+
+Route::get('/update', function () {
+    \App\Events\OrderStatusUpdated::dispatch();
 });
 
