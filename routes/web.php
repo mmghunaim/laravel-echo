@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/update', function () {
-    \App\Events\OrderStatusUpdated::dispatch();
+Route::get('/threads', function () {
+    return Thread::latest()->pluck('body');
 });
 
+Route::post('/threads', function () {
+    Thread::forceCreate(request('body'));
+});
