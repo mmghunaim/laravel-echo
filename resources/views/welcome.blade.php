@@ -64,6 +64,11 @@
         </style>
     </head>
     <body>
+        <div id="app" class="flex-center position-ref full-height">
+            <threads></threads>
 
+
+        </div>
     </body>
 </html>
+<script src="/js/app.js" ></script>
