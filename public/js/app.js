@@ -1933,9 +1933,16 @@ __webpack_require__.r(__webpack_exports__);
     });
     window.Echo.channel('threads').listen('ThreadCreated', function (e) {
       _this.threads.push(e.thread.title);
+    }).listenForWhisper('typing', function (e) {
+      alert('somebody is typing');
     });
   },
   methods: {
+    typing: function typing() {
+      window.Echo.channel('threads').whisper("typing", {
+        name: "mmghunaim"
+      });
+    },
     addThread: function addThread() {
       axios.post('/threads', {
         title: this.newThread
@@ -47202,6 +47209,7 @@ var render = function() {
       domProps: { value: _vm.newThread },
       on: {
         blur: _vm.addThread,
+        keydown: _vm.typing,
         input: function($event) {
           if ($event.target.composing) {
             return
